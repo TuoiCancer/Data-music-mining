@@ -1,95 +1,97 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+'use client';
+import { Box, Button, Input, TextField, Typography } from '@mui/material';
+import Image from 'next/image';
+import { useState } from 'react';
 
 export default function Home() {
+  const [author, setAuthor] = useState('');
+  const [type, setType] = useState('');
+  const [file, setFile] = useState('');
+  console.log('file', file);
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
+    <Box
+      sx={{
+        position: 'relative',
+        width: '100%',
+        height: '100vh',
+        pt: '100px',
+        color: '#fff',
+        pl: '20px',
+        '& img': {
+          objectFit: 'cover',
+          zIndex: -1,
+        },
+      }}
+    >
+      <Image src="/bg.jpg" fill alt="bg" />
+      <Box>
+        <Typography
+          variant="h2"
+          sx={{
+            fontWeight: 800,
+            fontSize: '120px',
+          }}
+        >
+          MUSIC.
+        </Typography>
+        <Typography
+          sx={{
+            fontSize: '24px',
+            maxWidth: '900px',
+          }}
+        >
+          Be the first to hear new tracks, connect directly with fellow fans and
+          your favorite artists in real time, and support the future of music
+          with every play, like, repost.
+        </Typography>
+      </Box>
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          padding: '60px 30px',
+          borderRadius: '10px',
+          width: '520px',
+          backgroundColor: '#377686',
+          marginTop: '120px',
+          marginLeft: '120px',
+        }}
+      >
+        <Input
+          type="file"
+          value={file}
+          onChange={(e) => setFile(e.target.value)}
         />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
+        <TextField
+          placeholder="Author"
+          value={author}
+          onChange={(e) => setAuthor(e.target.value)}
+          sx={{
+            backgroundColor: '#fff',
+            borderRadius: '5px',
+            margin: '30px 0',
+          }}
+        />
+        <TextField
+          value={type}
+          onChange={(e) => setType(e.target.value)}
+          placeholder="Type"
+          sx={{
+            backgroundColor: '#fff',
+            borderRadius: '5px',
+            margin: '20px 0',
+          }}
+        />
+        <Button
+          variant="contained"
+          sx={{
+            fontSize: '20px',
+          }}
         >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+          Extraction
+        </Button>
+      </Box>
+    </Box>
+  );
 }
